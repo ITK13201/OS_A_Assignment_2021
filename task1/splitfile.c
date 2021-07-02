@@ -8,8 +8,8 @@
 #define N 65535
 
 int main(int argc, char *argv[]) {
-    int fdi, fdo1, fdo2, split_pos, nread, i;
-    char buffer[N], rest_buffer[N];
+    int fdi, fdo1, fdo2, split_pos, nread;
+    char buffer[N];
     // get split position
     if ((split_pos = atoi(argv[4])) <= 0) {
         perror("invalid");
