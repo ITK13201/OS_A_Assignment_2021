@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     if((write(fdo1,buffer,nread)) != nread)
             write(2, "A write error has occurred\n", 27);
     if(nread == split_pos) {
-        if (lseek(fdi, 10, SEEK_SET) == -1) {
+        if (lseek(fdi, split_pos, SEEK_SET) == -1) {
             perror("lseek");
             exit(1);
         }
