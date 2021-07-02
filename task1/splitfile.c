@@ -4,6 +4,7 @@
 #include <sys/types.h>  /* open */
 #include <sys/stat.h>   /* open */
 #include <fcntl.h>      /* open */
+#include <unistd.h>
 #define N 65535
 
 int main(int argc, char *argv[]) {
@@ -28,21 +29,19 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     // read files 
-    nread = read(fdi, buffer, N);
-    // printf("%s, %d, %d\n", buffer, nread, split_pos);
-    if(nread <= split_pos) { // if num of bites read <= split position
-        if((write(fdo1,buffer,nread)) != nread)
+    nread = read(fdi, buffer, split_pos);
+    if((write(fdo1,buffer,nread)) != nread)
             write(2, "A write error has occurred\n", 27);
+    if(nread == split_pos) {
+        if (lseek(fdi, 10, SEEK_SET) == -1) {
+            perror("lseek");
+            exit(1);
+        }
+        nread = read(fdi, buffer, N);
+        if((write(fdo2, buffer, nread)) != nread)
+            write(2, "A write error has occurred\n", 27);
+        
     }
-    else if(nread > split_pos){
-        if((write(fdo1,buffer,split_pos)) != split_pos)
-            write(2, "A write error has occurred\n", 27);
-            for(i=0;i<nread - split_pos;i++){
-                rest_buffer[i] = buffer[split_pos + i];
-            }
-        if((write(fdo2,rest_buffer,i)) != i)
-            write(2, "A write error has occurred\n", 27);
-    } 
     // close files
     if (close(fdo1) == -1) {
         perror("close fdo1");
