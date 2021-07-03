@@ -40,7 +40,6 @@ int main(int argc, char *argv[]) {
         nread = read(fdi, buffer, N);
         if((write(fdo2, buffer, nread)) != nread)
             write(2, "A write error has occurred\n", 27);
-        
     }
     // close files
     if (close(fdo1) == -1) {
