@@ -11,3 +11,10 @@
 例えば，カレントディレクトリの下のexampleディレクトリにinput.txt，output1.txt，output2.txtが存在している場合，"./splitfile example/input.txt example/output1.txt example/output2.txt 10"とすればよい．
 
 # 課題2
+
+## プログラムファイルのコンパイル方法
+"uniqwc.c"が置かれているディレクトリに移動する．コマンドライン上で"gcc -o uniqwc uniqwc.c"と打ち込むことでコンパイルできる．
+
+## 実行時のコマンド
+実行ファイル"uniqwc"が置かれているディレクトリに移動する．コマンドライン上で"./uniqwc <入力ファイル名> と打ち込むことで実行できる．
+例えば，カレントディレクトリの下のexampleディレクトリにtmp.txtが存在している場合，"./uniqwc example/tmp.txt"とすればよい．
