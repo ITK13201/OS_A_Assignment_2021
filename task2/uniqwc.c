@@ -16,7 +16,13 @@ int main(int argc, char **argv) {
     close(fd[1]);
     close(0);
     dup(fd[0]);
-    execlp("wc", "wc", "-l", NULL);
+    if(argc !=3){
+      execlp("wc", "wc", "-l", NULL);
+    }
+    else{
+      execlp("wc", "wc", argv[2], NULL);
+    }
+    
     close(fd[0]);
   } 
   else if(pid == -1){
@@ -27,7 +33,10 @@ int main(int argc, char **argv) {
     close(fd[0]);
     close(1);
     dup(fd[1]);
-    execlp("uniq", "uniq", argv[1], NULL);
+    if(argc >= 2) {
+      execlp("uniq", "uniq", argv[1], NULL);
+    }
+    
     close(fd[1]);
   }
 }
