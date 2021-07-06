@@ -1,3 +1,4 @@
+// 1W192258-2 富家功一朗 kou.mokomoko1318@fuji.waseda.jp
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
