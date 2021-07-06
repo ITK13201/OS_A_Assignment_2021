@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
         perror("open fdo2");
         exit(1);
     }
+    
     // read files 
     nread = read(fdi, buffer, split_pos);
     if((write(fdo1,buffer,nread)) != nread)
